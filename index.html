@@ -22,7 +22,7 @@
         <div id="gallery" class="flexbin flexbin-margin"></div>
         
         <script type="text/javascript">
-            var images = [22,11,10,23,19,23,13,15,14,10,26,23,16];
+            var images = [22,11,10,23,19,23,12,15,14,10,26,23,16];
             var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             var gallery = document.getElementById("gallery");
             
@@ -36,18 +36,19 @@
                 overlay.style.display = 'none';
             }
             
-            showLoadScreen()
+            showLoadScreen();
             
+            var img = document.createElement("img");
             for (var i = 0; i < images.length; i++) {
                 for (var j = 1; j <= images[i]; j++) {
-                    var img = document.createElement("img");
+                    img = document.createElement("img");
                     img.src = "pics/"+ letters[i] +" ("+ j +").jpg";
                     
                     gallery.appendChild(img);
                 }
-                hideLoadScreen();
+                
             }
-            
+            img.load = hideLoadScreen();
         </script>
     </body>
 </html>
