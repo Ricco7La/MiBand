@@ -1,96 +1,37 @@
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Image Gallery</title>
-    <!-- used to start like an app with google chrome on android -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-    
-
-
-    <!-- Bootstrap Layout // loading default Stylesheet in 'js/main.js' -->
-    <link id="pagestyle" rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
-
-    <!-- Own Stylesheets  Layout -->
-    <link rel="stylesheet" href="css/style.css" type="text/css" />
-
-    <!-- Gallery Layout -->
-    <link rel="stylesheet" href="css/bootstrap-image-gallery.min.css" />
-    
-    <!-- jQuery -->
-    <script src="js/jquery-3.5.1.min.js"></script>
-
-</head>
-
-<body>
-    <!-- // content start -->
-    <div class="container-fluid">
-        <div id="subfolderPlaceholder"></div>
-        <span class="help-block"></span>
-        <div class="row" id="imageThumbnails"></div>
-    </div>
-
-    <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
-    <div id="blueimp-gallery" class="blueimp-gallery">
-        <!-- The container for the modal slides -->
-        <div class="slides"></div>
-        <!-- Controls for the borderless lightbox -->
-        <h3 class="title"></h3>
-        <a class="prev">‹</a>  <a class="next">›</a>  <a class="close">×</a>
-        <a class="play-pause"></a>
-        <ol class="indicator">
-        </ol>
-        <!-- The modal dialog, which will be used to wrap the lightbox content -->
-        <div class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title"></h4>
-                    </div>
-                    <div class="modal-body next"></div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default pull-left prev">
-                            <i class="glyphicon glyphicon-chevron-left"></i> Previous
-                        </button>
-                        <button type="button" class="btn btn-default play-pause" id="StartSlideshow">Slideshow
-                            <i class="glyphicon glyphicon-play-circle"></i>
-                        </button>
-                        <button type="button" class="btn btn-primary next">Next
-                            <i class="glyphicon glyphicon-chevron-right"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
+    <head>
+        <meta charset="utf-8" />
+        <title>Miband</title>
+        <meta name="viewport" content="width:device-width, initial-scale=1" />
+        <link href="css\flexbin.css" type="text/css" rel="stylesheet" media="all" />
+        
+        <link rel="stylesheet" href="css/glightbox.css">
+        
+        
+        <style>
+            body {
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="gallery" class="flexbin flexbin-margin">
         </div>
-        <!-- End of the modal dialog -->
-    </div>
-    </div>
-    <!-- // content end -->
-
-    <!-- End of Bootstrap Image Gallery lightbox -->
-    <!-- Start: Blueimp Gallery Scripts -->
-    <script src="js/jquery.blueimp-gallery.min.js"></script>
-    <script src="js/bootstrap-image-gallery.min.js"></script>
-    <!-- End: Blueimp Gallery Scripts -->
-
-    <script src="js/readFiles.js"></script>
-
-    <!-- Begin read files from folder -->
-    <script>
-        $(document).ready(function () {
-            var rootfolder = '../gallery';
-            getImageData(rootfolder);
-        });
-    </script>
-    <!-- End read files from folder -->
-
-     <script>
-        $('#home_btn').click(function () {
-            $('#StartSlideshow').toggleClass('active');
-        });
-    </script>
-
-</body>
-
+        
+        <script type="text/javascript">
+            var images = [22,11,10,23,19,23,13,15,14,10,26,23,16];
+            var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            var gallery = document.getElementById("gallery");
+            
+            for (var i = 0; i < images.length; i++) {
+                for (var j = 1; j <= images[i]; j++) {
+                    var img = document.createElement("img");
+                    img.src = "pics/"+ letters[i] +" ("+ j +").jpg";
+                    
+                    gallery.appendChild(img);
+                }
+            }
+        </script>
+    </body>
 </html>
